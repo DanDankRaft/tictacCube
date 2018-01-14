@@ -14,6 +14,7 @@ public class Placement : MonoBehaviour {
 			primaryTouch = Input.touches[0];
 			touchTime += primaryTouch.deltaTime;
 			touchDistance += primaryTouch.deltaPosition.magnitude;
+			
 			if(touchTime > 0.5f && touchDistance < 1f)
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -34,7 +35,7 @@ public class Placement : MonoBehaviour {
 								FindObjectOfType<PlayerManager>().currentPlayer = PlayerManager.Player.X;
 								break;
 						}
-						FindObjectOfType<PlayerManager>().scoreCalc();
+						FindObjectOfType<PlayerManager>().calcScore();
 					}
 				}
 			}

@@ -15,14 +15,14 @@ public class PlayerManager : MonoBehaviour {
 	public float xScore;
 	public float oScore;
 
+	[UnityEngine.SerializeField] GameObject gameOverUI;
 	public Slot[] slots;
 
 
 	Slot.Type[] slotsType;
 
 
-	public GameObject gameOverUI;
-	public void scoreCalc()
+	public void calcScore()
 	{
 		xScore = 0;
 		oScore = 0;
@@ -144,25 +144,19 @@ public class PlayerManager : MonoBehaviour {
 
 			if(areAllSlotsFull)
 			{
-				scoreCalc(); //Just in case
+				calcScore(); //Just in case
 
-				GameObject instantiatedUI = Instantiate(gameOverUI, FindObjectOfType<Canvas>().transform);
+				gameOverUI.SetActive(true);
 				if(xScore > oScore)
-				{
-					instantiatedUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "X won!";
-				}
+					gameOverUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "X won!";
 				else if(oScore > xScore)
-				{
-					instantiatedUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "O won!";
-				}
+					gameOverUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "O won!";
 				else
-				{
-					instantiatedUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "Draw!";
-				}
+					gameOverUI.transform.GetComponentInChildren<UnityEngine.UI.Text>().text = "Draw!";
 				isGameOver = true;
 
 				//make sure that all slots are visible. TODO, if we change toggleView's behavior, remember to change this part aswell
-				if(!slots[0].GetComponent<MeshRenderer>().enabled) ToggleView();
+				if(!slots[0].GetComponent<MeshRenderer>().enabled) FindObjectOfType<UIActions>().ToggleView();
 
 				FindObjectOfType<CameraMovement>().enabled = false;
 				FindObjectOfType<Placement>().enabled = false;
@@ -170,15 +164,5 @@ public class PlayerManager : MonoBehaviour {
 		}
 	}
 
-	public void ToggleView()
-	{
-		for(int i = 0; i < slots.Length; i++)
-		{
-			if(i != 13)
-			{
-				slots[i].GetComponent<MeshRenderer>().enabled = !slots[i].GetComponent<MeshRenderer>().enabled;
-				slots[i].GetComponent<BoxCollider>().enabled = !slots[i].GetComponent<BoxCollider>().enabled;
-			}
-		}
-	}
+
 }
