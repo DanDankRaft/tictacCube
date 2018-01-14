@@ -8,38 +8,37 @@ public class CameraMovement : MonoBehaviour {
 	public float intensity;
 	void Update()
 	{
-		if(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Moved && !FindObjectOfType<Placement>().wasTouchUsed)
+		//the if statement is just to make sure it's not zoom
+		if(Input.touchCount == 1)
 		{
 			positionDelta = Input.touches[0].deltaPosition;
 
-			rotate(2, positionDelta.x*intensity);
-			rotate(0, positionDelta.y*intensity);
+			rotate(directionIndex.leftRight, positionDelta.x*intensity);
+			rotate(directionIndex.upDown, positionDelta.y*intensity);
 		}
 	}
 
 
+	public enum directionIndex
+	{
+		leftRight,
+		upDown
+	}
+
 	public Transform cubeParentObject;
 
-	public void rotate(int directionIndex, float intensity)
+	public void rotate(directionIndex direction, float intensity)
 	{
 		Vector3 vectorDirection;
 
-		switch(directionIndex)
+		switch(direction)
 		{
-			case 0:
+			case directionIndex.upDown:
 				vectorDirection = Vector3.right;
 				break;
-			case 1:
-				vectorDirection = Vector3.left;
-				break;
-			case 2:
+			default: //case fallthrough!!!
+			case directionIndex.leftRight:
 				vectorDirection = Vector3.down;
-				break;
-			case 3:
-				vectorDirection = Vector3.up;
-				break;
-			default:
-				vectorDirection = Vector3.zero;
 				break;
 		}
 		cubeParentObject.Rotate(cubeParentObject.InverseTransformDirection(vectorDirection * intensity));

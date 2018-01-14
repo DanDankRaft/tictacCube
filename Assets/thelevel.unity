@@ -145,10 +145,10 @@ RectTransform:
   m_Father: {fileID: 1448647462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 354, y: -124}
-  m_SizeDelta: {x: 70.9, y: 61.3}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -96, y: 116}
+  m_SizeDelta: {x: 71, y: 71}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44744990
 MonoBehaviour:
@@ -1375,7 +1375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54906983cd99364aadbfc9d5f21067d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wasTouchUsed: 0
 --- !u!114 &818389635
 MonoBehaviour:
   m_ObjectHideFlags: 0

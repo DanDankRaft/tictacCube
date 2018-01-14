@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Placement : MonoBehaviour {
 
+	float touchTime = 0;
+	float touchDistance = 0;
 	void Update()
 	{
-		Touch potentialTouch;
-		float touchTime = 0;
-		float touchDistance = 0;
-		if(Input.touchCount > 0)
+		Touch primaryTouch;
+		if(Input.touchCount == 1)
 		{
-			potentialTouch = Input.touches[0];
-			touchTime += potentialTouch.deltaTime;
-			touchDistance += potentialTouch.deltaPosition.magnitude;
-			if(Input.GetMouseButtonDown(0) || (touchTime > 0.1f && touchDistance < 0.5f))
+			primaryTouch = Input.touches[0];
+			touchTime += primaryTouch.deltaTime;
+			touchDistance += primaryTouch.deltaPosition.magnitude;
+			if(touchTime > 0.5f && touchDistance < 1f)
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
@@ -37,7 +37,13 @@ public class Placement : MonoBehaviour {
 						FindObjectOfType<PlayerManager>().scoreCalc();
 					}
 				}
+			}
 
+
+			if(Input.touches[0].phase == TouchPhase.Ended)
+			{
+				touchTime = 0;
+				touchDistance = 0;
 			}
 		}
 		
