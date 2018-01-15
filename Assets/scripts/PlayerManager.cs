@@ -22,6 +22,20 @@ public class PlayerManager : MonoBehaviour {
 	Slot.Type[] slotsType;
 
 
+	void givePoint(Player player, string message=" misc. reason")
+	{
+		switch(player)
+		{
+			case Player.X:
+				Debug.Log("X got a point for " + message);
+				xScore++;
+				break;
+			case Player.O:
+				Debug.Log("O got a point for " + message);
+				oScore++;
+				break;
+		}
+	}
 	public void calcScore()
 	{
 		xScore = 0;
@@ -44,12 +58,10 @@ public class PlayerManager : MonoBehaviour {
 					{
 						//our conditional makes it impossible for none to be called, at least I think that's what's happening
 						case Slot.Type.X:
-							Debug.Log("X has been given a point for a horizontal line");
-							xScore++;
+							givePoint(Player.X, "a horizontal line");
 							break;
 						case Slot.Type.O:
-							Debug.Log("O has been given a point for a horizontal line");
-							oScore++;
+							givePoint(Player.O, "a horizontal line");
 							break;
 					}
 				}
@@ -62,54 +74,47 @@ public class PlayerManager : MonoBehaviour {
 				{
 					switch(slotsType[i+n])
 					{
-						//our conditional makes it impossible for none to be called, at least I think that's what's happening
 						case Slot.Type.X:
-							Debug.Log("X has been given a point for a vertical line");
-							xScore++;
+							givePoint(Player.X, "a vertical line");
 							break;
 						case Slot.Type.O:
-							Debug.Log("O has been given a point for a vertical line");
-							oScore++;
+							givePoint(Player.O, "a vertical line");
 							break;
 					}
 				}
 			}
 
 			//diagonal lines.
-			//there are 2 types of diagonals- ones that go from top left to bottom right, and vice versa. Thus the 2 if statements
+			//First type of diagonal
 			if(slotsType[n] == slotsType[n+4] && slotsType[n+4] == slotsType[n+8])
 			{
 					switch(slotsType[n])
 					{
-						//our conditional makes it impossible for none to be called, at least I think that's what's happening
 						case Slot.Type.X:
-							Debug.Log("X has been given a point for a diagonal line");
-							xScore++;
+							givePoint(Player.X, "a diagonal line");
 							break;
 						case Slot.Type.O:
-							Debug.Log("O has been given a point for a digonal line");
-							oScore++;
+							givePoint(Player.O, "a diagonal line");
 							break;
 					}
 			}
 
+			//second type of diagonal
 			if(slotsType[n+2] == slotsType[n+4] && slotsType[n+4] == slotsType[n+6])
 			{
 					switch(slotsType[n+2])
 					{
-						//our conditional makes it impossible for none to be called, at least I think that's what's happening
 						case Slot.Type.X:
-							Debug.Log("X has been given a point for a diagonal line");
-							xScore++;
+							givePoint(Player.X, "a diagonal line");
 							break;
 						case Slot.Type.O:
-							Debug.Log("O has been given a point for a digonal line");
-							oScore++;
+							givePoint(Player.O, "a diagonal line");
 							break;
 					}
 			}
 		}
 
+		//z-horizontal lines
 		for(int n = 0; n < 9; n += 1)
 		{
 			if(slotsType[n] == slotsType[n+9] && slotsType[n+9] == slotsType[n+18])
@@ -117,12 +122,10 @@ public class PlayerManager : MonoBehaviour {
 				switch(slotsType[n])
 				{
 					case Slot.Type.X:
-						xScore++;
-						Debug.Log("X has been given a point for a z-horizontal line");
+							givePoint(Player.X, "a z-horizontal line");
 						break;
 					case Slot.Type.O:
-						oScore++;
-						Debug.Log("O has been given a point for a z-horizontal line");
+							givePoint(Player.O, "a z-horizontal line");
 						break;
 				}
 			}

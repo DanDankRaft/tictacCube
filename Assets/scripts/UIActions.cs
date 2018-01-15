@@ -21,4 +21,17 @@ public class UIActions : MonoBehaviour {
 			}
 		}
 	}
+
+	public string scoreText()
+	{
+		PlayerManager manager = FindObjectOfType<PlayerManager>();
+		return "X score: " + manager.xScore + "\nO score: " + manager.oScore;
+	}
+
+	public UnityEngine.UI.Text scoreTextObject;
+
+	void Update()
+	{
+		scoreTextObject.text = scoreText();
+	}
 }
