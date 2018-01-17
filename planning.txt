@@ -1,0 +1,13 @@
+as for pause menu:
+    We need to add a pause button first, with || text.
+        Button calls UIActions.Pause()
+
+    Pause menu will darken everything (Place a darkening sprite/image?)
+    Will have the word "Pause" and a Start Over button.
+        Start over will call UIActions.Restart()
+    Pressing anywhere that isn't text or Start over will call UIActions.Resume()
+
+
+    Functions to add to UIActions:
+        Pause()- disables CameraMovement and Placement, disables pause button's button component, activates PauseMenu object.
+        Resume()- enables CameraMovement and Placement, enables pause button's button component, de-activates PauseMenu object.
