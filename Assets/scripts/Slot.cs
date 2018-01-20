@@ -11,7 +11,21 @@ public class Slot : MonoBehaviour {
 	{
 		None,
 		X,
-		O
+		O,
+		XO
+	}
+
+	public static bool compareSlots(Type first, Type second, Type third)
+	{
+		Type firstType = first;
+		Type secondType = second;
+		Type thirdType = third;
+		if(secondType == Type.XO)
+			secondType = firstType;
+		if(firstType == secondType && secondType == thirdType)
+			return true;
+		else
+			return false;
 	}
 	
 	//TODO see if there is a way to swich this whole thing into a property, once I have internet connection and can figure out how properties work again

@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour {
 			//horizontal lines.
 			for(int i = 0; i < 9; i += 3)
 			{
-				if(slotsType[i+n] == slotsType[i+n+1] && slotsType[i+n+1] == slotsType[i+n+2])
+				if(Slot.compareSlots(slotsType[i+n], slotsType[i+n+1], slotsType[i+n+2]))
 				{
 					switch(slotsType[i+n])
 					{
@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour {
 			//vertical lines.
 			for(int i = 0; i < 3; i++)
 			{
-				if(slotsType[i+n] == slotsType[i+n+3] && slotsType[i+n+3] == slotsType[i+n+6])
+				if(Slot.compareSlots(slotsType[i+n], slotsType[i+n+3], slotsType[i+n+6]))
 				{
 					switch(slotsType[i+n])
 					{
@@ -86,7 +86,7 @@ public class PlayerManager : MonoBehaviour {
 
 			//diagonal lines.
 			//First type of diagonal
-			if(slotsType[n] == slotsType[n+4] && slotsType[n+4] == slotsType[n+8])
+			if(Slot.compareSlots(slotsType[n], slotsType[n+4], slotsType[n+8]))
 			{
 					switch(slotsType[n])
 					{
@@ -100,7 +100,7 @@ public class PlayerManager : MonoBehaviour {
 			}
 
 			//second type of diagonal
-			if(slotsType[n+2] == slotsType[n+4] && slotsType[n+4] == slotsType[n+6])
+			if(Slot.compareSlots(slotsType[n+2], slotsType[n+4], slotsType[n+6]))
 			{
 					switch(slotsType[n+2])
 					{
@@ -117,7 +117,7 @@ public class PlayerManager : MonoBehaviour {
 		//z-horizontal lines
 		for(int n = 0; n < 9; n += 1)
 		{
-			if(slotsType[n] == slotsType[n+9] && slotsType[n+9] == slotsType[n+18])
+			if(Slot.compareSlots(slotsType[n], slotsType[n+9], slotsType[n+18]))
 			{
 				switch(slotsType[n])
 				{
