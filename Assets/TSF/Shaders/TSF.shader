@@ -67,6 +67,7 @@ Shader "TSF/Base1"
                      #if _TEX_ON
                     o.uv = TRANSFORM_TEX ( v.texcoord, _MainTex );
                     #endif
+
                     return o;
                 }
 
