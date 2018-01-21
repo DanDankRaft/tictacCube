@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Player manager takes care of score management and who the current player is
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
