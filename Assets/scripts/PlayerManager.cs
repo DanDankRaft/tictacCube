@@ -115,6 +115,64 @@ public class PlayerManager : MonoBehaviour {
 			}
 		}
 
+		//third and fourth type of diagonal
+		for(int n = 0; n < 3; n++)
+		{
+			if(Slot.compareSlots(slotsType[n], slotsType[n+12], slotsType[n+24]))
+			{
+					switch(slotsType[n])
+					{
+						case Slot.Type.X:
+							givePoint(Player.X, "a diagonal line");
+							break;
+						case Slot.Type.O:
+							givePoint(Player.O, "a diagonal line");
+							break;
+					}
+			}
+			if(Slot.compareSlots(slotsType[n+6], slotsType[n+12], slotsType[n+18]))
+			{
+					switch(slotsType[n+18])
+					{
+						case Slot.Type.X:
+							givePoint(Player.X, "a diagonal line");
+							break;
+						case Slot.Type.O:
+							givePoint(Player.O, "a diagonal line");
+							break;
+					}
+			}
+		}
+
+		//fith and sixth types of diagonals
+		for(int n = 0; n <= 6; n+=3)
+		{
+			if(Slot.compareSlots(slotsType[n], slotsType[n+10], slotsType[n+20]))
+			{
+					switch(slotsType[n])
+					{
+						case Slot.Type.X:
+							givePoint(Player.X, "a diagonal line");
+							break;
+						case Slot.Type.O:
+							givePoint(Player.O, "a diagonal line");
+							break;
+					}
+			}
+			if(Slot.compareSlots(slotsType[n+2], slotsType[n+10], slotsType[n+18]))
+			{
+					switch(slotsType[n+2])
+					{
+						case Slot.Type.X:
+							givePoint(Player.X, "a diagonal line");
+							break;
+						case Slot.Type.O:
+							givePoint(Player.O, "a diagonal line");
+							break;
+					}
+			}
+		}
+
 		//z-horizontal lines
 		for(int n = 0; n < 9; n += 1)
 		{
