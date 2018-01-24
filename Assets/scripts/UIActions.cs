@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIActions : MonoBehaviour {
 
+	public Animator cubeAnimator;
 	public void Restart()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("thelevel");
@@ -11,7 +12,7 @@ public class UIActions : MonoBehaviour {
 
 	public void ToggleView()
 	{
-		Slot[] slots = FindObjectOfType<PlayerManager>().slots;
+		/*Slot[] slots = FindObjectOfType<PlayerManager>().slots;
 		for(int i = 0; i < slots.Length; i++)
 		{
 			if(i != 13)
@@ -19,7 +20,13 @@ public class UIActions : MonoBehaviour {
 				slots[i].GetComponent<MeshRenderer>().enabled = !slots[i].GetComponent<MeshRenderer>().enabled;
 				slots[i].GetComponent<BoxCollider>().enabled = !slots[i].GetComponent<BoxCollider>().enabled;
 			}
+		}*/
+		switch(cubeAnimator.GetCurrentAnimatorStateInfo(0).has)
+		{
+			
 		}
+		cubeAnimator.Play("cubeOpening");
+		
 	}
 
 	public string scoreText()

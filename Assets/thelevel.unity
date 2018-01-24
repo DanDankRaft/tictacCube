@@ -3535,7 +3535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1448647459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3630,6 +3630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e624bed5a3dc65c4d9c62d0a92c4685c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeAnimator: {fileID: 2058274530}
   pauseButton: {fileID: 176081936}
   pauseMenu: {fileID: 1165992222}
   scoreTextObject: {fileID: 1324143865}
@@ -4106,6 +4107,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2058274529}
+  - component: {fileID: 2058274530}
   m_Layer: 0
   m_Name: The Cube
   m_TagString: Untagged
@@ -4153,6 +4155,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2058274530
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2058274528}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c414db85bd29310429c1d69d769d20e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2070285531
 GameObject:
   m_ObjectHideFlags: 0
