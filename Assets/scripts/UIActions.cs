@@ -21,11 +21,10 @@ public class UIActions : MonoBehaviour {
 				slots[i].GetComponent<BoxCollider>().enabled = !slots[i].GetComponent<BoxCollider>().enabled;
 			}
 		}*/
-		switch(cubeAnimator.GetCurrentAnimatorStateInfo(0).has)
-		{
-			
-		}
-		cubeAnimator.Play("cubeOpening");
+		if(cubeAnimator.GetCurrentAnimatorStateInfo(0).IsName("default"))
+			cubeAnimator.Play("cubeOpening");
+		else if(cubeAnimator.GetCurrentAnimatorStateInfo(0).IsName("cubeOpening"))
+			cubeAnimator.SetTrigger("switchToClosing");
 		
 	}
 
