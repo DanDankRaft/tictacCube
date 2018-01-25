@@ -336,7 +336,7 @@ RectTransform:
   m_Children:
   - {fileID: 510069184}
   m_Father: {fileID: 1448647462}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 410462591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 625f24596868565498605bdb772849f2, type: 3}
   m_Name: 
@@ -736,7 +736,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1448647462}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 818389633}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c54906983cd99364aadbfc9d5f21067d, type: 3}
   m_Name: 
@@ -1665,9 +1665,9 @@ RectTransform:
   - {fileID: 2080283911}
   - {fileID: 434777461}
   - {fileID: 1324143867}
-  - {fileID: 176081935}
-  - {fileID: 1165992223}
   - {fileID: 775130385}
+  - {fileID: 1165992223}
+  - {fileID: 176081935}
   - {fileID: 1827523448}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1819,9 +1819,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1827523449}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1448647463}
+        m_MethodName: Resume
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

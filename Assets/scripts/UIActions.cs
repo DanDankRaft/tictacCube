@@ -29,17 +29,24 @@ public class UIActions : MonoBehaviour {
     [SerializeField] GameObject pauseMenu;
     public void Pause()
     {
-        FindObjectOfType<Placement>().enabled = false;
-        FindObjectOfType<CameraMovement>().enabled = false;
-        //pauseButton.enabled = false;
-        pauseMenu.SetActive(true);
+		if(pauseMenu.activeInHierarchy)
+		{
+			Resume();
+			return;
+		}
+		else
+		{
+			FindObjectOfType<Placement>().enabled = false;
+			FindObjectOfType<CameraMovement>().enabled = false;
+			pauseMenu.SetActive(true);
+		}
     }
 
     public void Resume()
     {
+		GameObject.Find("gameStart UI").SetActive(false);
         FindObjectOfType<Placement>().enabled = true;
         FindObjectOfType<CameraMovement>().enabled = true;
-        //pauseButton.enabled = true;
         pauseMenu.SetActive(false);
     }
 
