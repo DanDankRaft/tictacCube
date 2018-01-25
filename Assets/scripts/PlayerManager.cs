@@ -22,7 +22,6 @@ public class PlayerManager : MonoBehaviour {
 
 	Slot.Type[] slotsType;
 
-
 	void givePoint(Player player, string message=" misc. reason")
 	{
 		switch(player)
@@ -55,6 +54,7 @@ public class PlayerManager : MonoBehaviour {
 			{
 				if(Slot.compareSlots(slotsType[i+n], slotsType[i+n+1], slotsType[i+n+2]))
 				{
+					StartCoroutine(pointIndicator(i+n, i+n+1, i+n+2));
 					switch(slotsType[i+n])
 					{
 						//our conditional makes it impossible for none to be called, at least I think that's what's happening
@@ -73,6 +73,7 @@ public class PlayerManager : MonoBehaviour {
 			{
 				if(Slot.compareSlots(slotsType[i+n], slotsType[i+n+3], slotsType[i+n+6]))
 				{
+					StartCoroutine(pointIndicator(i+n, i+n+3, i+n+6));
 					switch(slotsType[i+n])
 					{
 						case Slot.Type.X:
@@ -89,6 +90,7 @@ public class PlayerManager : MonoBehaviour {
 			//First type of diagonal
 			if(Slot.compareSlots(slotsType[n], slotsType[n+4], slotsType[n+8]))
 			{
+					StartCoroutine(pointIndicator(n, n+4, n+8));
 					switch(slotsType[n])
 					{
 						case Slot.Type.X:
@@ -103,6 +105,7 @@ public class PlayerManager : MonoBehaviour {
 			//second type of diagonal
 			if(Slot.compareSlots(slotsType[n+2], slotsType[n+4], slotsType[n+6]))
 			{
+					StartCoroutine(pointIndicator(n+2, n+4, n+6));
 					switch(slotsType[n+2])
 					{
 						case Slot.Type.X:
@@ -120,6 +123,7 @@ public class PlayerManager : MonoBehaviour {
 		{
 			if(Slot.compareSlots(slotsType[n], slotsType[n+12], slotsType[n+24]))
 			{
+					StartCoroutine(pointIndicator(n, n+12, n+24));
 					switch(slotsType[n])
 					{
 						case Slot.Type.X:
@@ -132,6 +136,7 @@ public class PlayerManager : MonoBehaviour {
 			}
 			if(Slot.compareSlots(slotsType[n+6], slotsType[n+12], slotsType[n+18]))
 			{
+					StartCoroutine(pointIndicator(n+6, n+12, n+18));
 					switch(slotsType[n+18])
 					{
 						case Slot.Type.X:
@@ -149,6 +154,7 @@ public class PlayerManager : MonoBehaviour {
 		{
 			if(Slot.compareSlots(slotsType[n], slotsType[n+10], slotsType[n+20]))
 			{
+					StartCoroutine(pointIndicator(n, n+10, n+20));
 					switch(slotsType[n])
 					{
 						case Slot.Type.X:
@@ -161,6 +167,7 @@ public class PlayerManager : MonoBehaviour {
 			}
 			if(Slot.compareSlots(slotsType[n+2], slotsType[n+10], slotsType[n+18]))
 			{
+					StartCoroutine(pointIndicator(n+2, n+10, n+18));
 					switch(slotsType[n+2])
 					{
 						case Slot.Type.X:
@@ -178,6 +185,7 @@ public class PlayerManager : MonoBehaviour {
 		{
 			if(Slot.compareSlots(slotsType[n], slotsType[n+9], slotsType[n+18]))
 			{
+				StartCoroutine(pointIndicator(n, n+9, n+18));
 				switch(slotsType[n])
 				{
 					case Slot.Type.X:
@@ -227,4 +235,17 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 
+
+	IEnumerator pointIndicator(int a, int b, int c)
+	{
+		Debug.LogWarning("what have we done? " + a + " " + b + " " + c);
+		foreach(Slot s in slots)
+		{
+			if(s != slots[a] && s != slots[b] && s != slots[c])
+				s.gameObject.SetActive(false);
+		}
+		yield return new WaitForSeconds(1);
+		foreach(Slot s in slots)
+			s.gameObject.SetActive(true);
+	}
 }

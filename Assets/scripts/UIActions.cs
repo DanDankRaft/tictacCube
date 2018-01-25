@@ -12,15 +12,6 @@ public class UIActions : MonoBehaviour {
 
 	public void ToggleView()
 	{
-		/*Slot[] slots = FindObjectOfType<PlayerManager>().slots;
-		for(int i = 0; i < slots.Length; i++)
-		{
-			if(i != 13)
-			{
-				slots[i].GetComponent<MeshRenderer>().enabled = !slots[i].GetComponent<MeshRenderer>().enabled;
-				slots[i].GetComponent<BoxCollider>().enabled = !slots[i].GetComponent<BoxCollider>().enabled;
-			}
-		}*/
 		if(cubeAnimator.GetCurrentAnimatorStateInfo(0).IsName("default"))
 			cubeAnimator.Play("cubeOpening");
 		else if(cubeAnimator.GetCurrentAnimatorStateInfo(0).IsName("cubeOpening"))

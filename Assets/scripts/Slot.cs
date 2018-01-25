@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour {
 		Type thirdType = third;
 		if(secondType == Type.XO)
 			secondType = firstType;
-		if(firstType == secondType && secondType == thirdType)
+		if(firstType == secondType && secondType == thirdType && firstType != Type.None)
 			return true;
 		else
 			return false;
