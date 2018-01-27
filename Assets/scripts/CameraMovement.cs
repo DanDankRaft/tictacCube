@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour {
 
 	Vector2 positionDelta;
-	public float intensity;
+	public float sensetivity;
 	void Update()
 	{
 		//the if statement is just to make sure it's not zoom
@@ -13,9 +13,20 @@ public class CameraMovement : MonoBehaviour {
 		{
 			positionDelta = Input.touches[0].deltaPosition;
 
-			rotate(directionIndex.leftRight, positionDelta.x*intensity);
-			rotate(directionIndex.upDown, positionDelta.y*intensity);
+			rotate(directionIndex.leftRight, positionDelta.x*sensetivity);
+			rotate(directionIndex.upDown, positionDelta.y*sensetivity);
 		}
+	}
+
+	public void setSensetivity(float newSenstivity)
+	{
+		PlayerPrefs.SetFloat("cameraSensetivity", newSenstivity);
+		sensetivity = newSenstivity;
+	}
+
+	void Awake()
+	{
+		sensetivity = PlayerPrefs.GetFloat("cameraSensetivity", 0.5f);
 	}
 
 
