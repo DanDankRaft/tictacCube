@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class UIActions : MonoBehaviour {
 
+    [SerializeField] UnityEngine.UI.Button pauseButton;
 	public Animator cubeAnimator;
+	bool isPaused = false;
+    [SerializeField] GameObject pauseMenu;
 	public void Restart()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene("thelevel");
@@ -25,26 +28,18 @@ public class UIActions : MonoBehaviour {
 		return "X score: " + manager.xScore + "\nO score: " + manager.oScore;
 	}
 
-    [SerializeField] UnityEngine.UI.Button pauseButton;
-    [SerializeField] GameObject pauseMenu;
     public void Pause()
     {
-		if(pauseMenu.activeInHierarchy)
-		{
-			Resume();
-			return;
-		}
-		else
-		{
-			FindObjectOfType<Placement>().enabled = false;
-			FindObjectOfType<CameraMovement>().enabled = false;
-			pauseMenu.SetActive(true);
-		}
+		GameObject.Find("toggleView button").GetComponent<UnityEngine.UI.Button>().enabled = false;
+		FindObjectOfType<Placement>().enabled = false;
+		FindObjectOfType<CameraMovement>().enabled = false;
+		pauseMenu.SetActive(true);
     }
 
     public void Resume()
     {
-		GameObject.Find("gameStart UI").SetActive(false);
+		GameObject.Find("toggleView button").GetComponent<UnityEngine.UI.Button>().enabled = true;
+		//GameObject.Find("gameStart UI").SetActive(false);
         FindObjectOfType<Placement>().enabled = true;
         FindObjectOfType<CameraMovement>().enabled = true;
         pauseMenu.SetActive(false);
@@ -56,4 +51,22 @@ public class UIActions : MonoBehaviour {
 	{
 		scoreTextObject.text = scoreText();
 	}
+
+	public void togglePausing()
+	{
+		if(isPaused)
+			Resume();
+		else
+			Pause();
+		isPaused = !isPaused;
+	}
+
+	public void gotIt()
+    {
+		GameObject.Find("toggleView button").GetComponent<UnityEngine.UI.Button>().enabled = true;
+		GameObject.Find("gameStart UI").SetActive(false);
+        FindObjectOfType<Placement>().enabled = true;
+        FindObjectOfType<CameraMovement>().enabled = true;
+        pauseMenu.SetActive(false);
+    }
 }

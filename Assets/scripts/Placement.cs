@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class Placement : MonoBehaviour {
 
-	float touchTime = 0;
-	float touchDistance = 0;
+	float stationaryTime = 0;
+	[SerializeField] bool didEverMove;
 	void Update()
 	{
 		Touch primaryTouch;
 		if(Input.touchCount == 1)
 		{
 			primaryTouch = Input.touches[0];
-			touchTime += primaryTouch.deltaTime;
-			touchDistance += primaryTouch.deltaPosition.magnitude;
+			if(primaryTouch.phase == TouchPhase.Began)
+			{
+				didEverMove = false;
+			}
+			else if(primaryTouch.phase == TouchPhase.Moved)
+			{
+				didEverMove = true;
+			}
 			
-			if(touchTime > 0.5f && touchDistance < 1f)
+			if(primaryTouch.phase == TouchPhase.Ended && !didEverMove)
 			{
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
@@ -38,13 +44,6 @@ public class Placement : MonoBehaviour {
 						FindObjectOfType<PlayerManager>().calcScore();
 					}
 				}
-			}
-
-
-			if(Input.touches[0].phase == TouchPhase.Ended)
-			{
-				touchTime = 0;
-				touchDistance = 0;
 			}
 		}
 		

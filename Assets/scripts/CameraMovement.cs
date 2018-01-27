@@ -9,7 +9,7 @@ public class CameraMovement : MonoBehaviour {
 	void Update()
 	{
 		//the if statement is just to make sure it's not zoom
-		if(Input.touchCount == 1)
+		if(Input.touchCount == 1 && Input.touches[0].phase == TouchPhase.Moved)
 		{
 			positionDelta = Input.touches[0].deltaPosition;
 
