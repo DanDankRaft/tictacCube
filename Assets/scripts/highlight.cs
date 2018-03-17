@@ -15,6 +15,6 @@ public class highlight : MonoBehaviour
                 s.gameObject.SetActive(false);
         }
 
-
+        aObject.GetComponent<m
     }
 }
